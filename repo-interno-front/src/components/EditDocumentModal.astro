@@ -1,0 +1,42 @@
+---
+import Modal from './Modal.astro';
+
+interface Props {
+  id: string;
+}
+
+const { id } = Astro.props;
+---
+
+<Modal id={id} titulo="Editar documento" descripcion="Actualiza la descripción o la categoría del documento.">
+  <form data-editar-documento-form novalidate>
+    <input type="hidden" name="uuid" />
+
+    <label class="field">
+      <span class="field__label">Archivo</span>
+      <input type="text" name="file_name" disabled />
+    </label>
+
+    <label class="field">
+      <span class="field__label">Descripción</span>
+      <input type="text" name="descripcion" placeholder="Acta de junta directiva — julio" required />
+    </label>
+
+    <label class="field">
+      <span class="field__label">Categoría</span>
+      <select name="categoria_id" data-categoria-select required>
+        <option value="">Cargando categorías…</option>
+      </select>
+    </label>
+    
+    <label class="checkbox">
+      <span class="field__label">Activo</span>
+      <input type="checkbox" name="activo">
+    </label>
+
+    <div class="modal__actions">
+      <button type="button" class="btn btn--ghost" data-modal-cerrar>Cancelar</button>
+      <button type="submit" class="btn" data-editar-documento-submit>Guardar cambios</button>
+    </div>
+  </form>
+</Modal>

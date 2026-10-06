@@ -1,0 +1,71 @@
+---
+import Modal from './Modal.astro';
+
+interface Props {
+  id: string;
+}
+
+const { id } = Astro.props;
+---
+
+<Modal id={id} titulo="Editar usuario" descripcion="Actualiza la información de la cuenta.">
+  <form data-editar-usuario-form novalidate>
+    <input type="hidden" name="uuid" />
+
+    <label class="field">
+      <span class="field__label">Usuario</span>
+      <input type="text" name="username" minlength="9" maxlength="10"/>
+    </label>
+
+    <div class="field-row">
+      <label class="field">
+        <span class="field__label">Nombre</span>
+        <input type="text" name="nombre" required />
+      </label>
+      <label class="field">
+        <span class="field__label">Apellido</span>
+        <input type="text" name="apellido" required />
+      </label>
+    </div>
+
+    <div class="field-row field-row--check" data-campos-admin>
+      <label class="checkbox">
+        <input type="checkbox" name="es_admin" />
+        <span>Permisos de administrador</span>
+      </label>
+      <label class="checkbox">
+        <input type="checkbox" name="activo" />
+        <span>Cuenta activa</span>
+      </label>
+    </div>
+
+    <div data-campos-password-autoedicion hidden>
+      <label class="field">
+        <span class="field__label">Contraseña actual</span>
+        <input type="password" name="old_password" autocomplete="current-password" />
+      </label>
+      <div class="field-row">
+        <label class="field">
+          <span class="field__label">Nueva contraseña</span>
+          <input type="password" name="new_password_self" autocomplete="new-password" />
+        </label>
+        <label class="field">
+          <span class="field__label">Confirmación de contraseña</span>
+          <input type="password" name="confirm_password" autocomplete="new-password" />
+        </label>
+      </div>
+      <span class="field__hint">Deja estos campos en blanco para no cambiar tu contraseña. Mínimo 8 caracteres, con mayúscula, número y carácter especial.</span>
+    </div>
+
+    <label class="field" data-campo-password-admin hidden>
+      <span class="field__label">Restablecer contraseña (opcional)</span>
+      <input type="password" name="new_password_admin" placeholder="Dejar en blanco para no cambiarla" autocomplete="new-password" />
+      <span class="field__hint">Mínimo 8 caracteres, con mayúscula, número y carácter especial.</span>
+    </label>
+
+    <div class="modal__actions">
+      <button type="button" class="btn btn--ghost" data-modal-cerrar>Cancelar</button>
+      <button type="submit" class="btn" data-editar-usuario-submit>Guardar cambios</button>
+    </div>
+  </form>
+</Modal>

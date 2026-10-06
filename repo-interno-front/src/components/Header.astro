@@ -1,0 +1,67 @@
+---
+import '@styles/header.css'
+import EditUserModal from './EditUserModal.astro';
+import DocumentPreviewModal from './DocumentPreviewModal.astro';
+
+interface Props {
+  active?: 'expedientes' | 'panel';
+  showUserMenu?: boolean;
+}
+
+const { active = 'expedientes', showUserMenu = false } = Astro.props;
+
+const fecha = new Date().toLocaleDateString('es-CL', {
+  weekday: 'long',
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+
+---
+
+<header class="masthead">
+  <div class="masthead__inner">
+    <div class="masthead__brand">
+      <span class="masthead__mark" aria-hidden="true">
+        <svg viewBox="0 0 40 40" width="34" height="34">
+          <rect x="1" y="1" width="38" height="38" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M11 13 H29 M11 20 H29 M11 27 H22" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <div class="masthead__titles">
+        <h1>Archivo</h1>
+        <p class="masthead__sub">Repositorio Documental Interno</p>
+      </div>
+    </div>
+
+    <nav class="masthead__nav" aria-label="Navegación principal">
+      <a href="/" class:list={{ 'is-active': active === 'expedientes' }}>Expedientes</a>
+      <!-- <a href="/categorias">Categorías</a> -->
+      <a href="/dashboard" class:list={{ 'is-active': active === 'panel' }}>Panel</a>
+    </nav>
+
+    <div class="masthead__meta">
+      <p class="eyebrow">{fecha}</p>
+      <div class="masthead__user">
+        <button type="button" class="masthead__profile" data-abrir-editar-perfil aria-label="Editar mi perfil">
+          <span class="masthead__avatar" data-user-avatar>....</span>
+          <div data-user>
+            <p class="masthead__name" data-user-name>.....</p>
+            <p class="masthead__role" data-user-role>.....</p>
+          </div>
+        </button>
+        {showUserMenu && (
+          <button type="button" class="masthead__logout" id="data-logout">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        )}
+      </div>
+    </div>
+  </div>
+  <div class="masthead__rule" aria-hidden="true"></div>
+</header>
+
+<EditUserModal id="modal-editar-perfil" />
+<DocumentPreviewModal id="modal-visualizar-documento" />
+
+<script src="/src/lib/header.ts"></script>

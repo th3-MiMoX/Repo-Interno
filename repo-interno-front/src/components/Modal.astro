@@ -1,0 +1,118 @@
+---
+interface Props {
+  id: string;
+  titulo: string;
+  descripcion?: string;
+  adminOnly?: boolean;
+  size?: 'default' | 'wide';
+}
+
+const { id, titulo, descripcion, adminOnly = false, size = 'default' } = Astro.props;
+---
+
+<dialog id={id} class="modal" data-size={size} data-admin-only={adminOnly ? '' : undefined}>
+  <div class="modal__card">
+    <header class="modal__head">
+      <div>
+        <p class="eyebrow" data-modal-eyebrow>Archivo</p>
+        <h3 data-modal-titulo>{titulo}</h3>
+        {descripcion && <p class="modal__desc">{descripcion}</p>}
+      </div>
+      <button type="button" class="modal__close" data-modal-cerrar aria-label="Cerrar">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </header>
+
+    <ul class="modal__errores" data-form-errores></ul>
+
+    <slot />
+  </div>
+</dialog>
+
+<style>
+  .modal {
+    border: none;
+    border-radius: var(--radius-md);
+    padding: 0;
+    background: var(--paper);
+    box-shadow: var(--shadow-lift);
+    max-width: 480px;
+    width: min(90vw, 480px);
+  }
+
+  .modal[data-size='wide'] {
+    max-width: 880px;
+    width: min(92vw, 880px);
+  }
+
+  .modal::backdrop {
+    background: rgba(28, 24, 20, 0.45);
+    backdrop-filter: blur(1px);
+  }
+
+  .modal__card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px 26px 28px;
+  }
+
+  .modal__head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 16px;
+  }
+
+  .modal__head h3 {
+    font-size: 20px;
+    margin-top: 4px;
+  }
+
+  .modal__desc {
+    margin: 6px 0 0;
+    font-size: 13.5px;
+    color: var(--ink-500);
+    max-width: 340px;
+  }
+
+  .modal__close {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--ink-muted);
+    cursor: pointer;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .modal__close:hover {
+    color: var(--stamp-terracotta-dark);
+    border-color: var(--stamp-terracotta-dark);
+  }
+
+  .modal__errores {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .modal__errores:not(:empty) {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 10px 12px;
+    border: 1px solid var(--danger);
+    border-radius: var(--radius-sm);
+    background: rgba(163, 57, 42, 0.07);
+  }
+
+  /* .modal__errores li vive en global.css: los <li> se inyectan por JS
+     y no reciben el atributo de scope de Astro */
+</style>

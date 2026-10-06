@@ -1,0 +1,44 @@
+---
+import Modal from './Modal.astro';
+
+interface Props {
+  id: string;
+}
+
+const { id } = Astro.props;
+---
+
+<Modal id={id} titulo="Subir documento" descripcion="Registra un nuevo archivo en el repositorio.">
+  <form data-documento-form novalidate>
+    <!-- <label class="field">
+      <span class="field__label">Nombre</span>
+      <input type="text" name="file_name" placeholder="Acta de junta directiva" required />
+    </label> -->
+    <label class="field">
+      <span class="field__label">Descripción</span>
+      <input type="text" name="descripcion" placeholder="Acta de junta directiva — julio" required />
+    </label>
+
+    <label class="field">
+      <span class="field__label">Categoría</span>
+      <select name="categoria_id" data-categoria-select required>
+        <option value="">Cargando categorías…</option>
+      </select>
+    </label>
+
+    <label class="field">
+      <span class="field__label">Archivo (PDF, DOCX o XLSX, máx. 15 MB)</span>
+      <input
+        type="file"
+        name="archivo"
+        accept=".pdf,.docx,.xlsx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        required
+      />
+    </label>
+
+    <div class="modal__actions">
+      <button type="button" class="btn btn--ghost" data-modal-cerrar>Cancelar</button>
+      <button type="submit" class="btn" data-documento-submit>Subir documento</button>
+    </div>
+  </form>
+</Modal>

@@ -1,0 +1,151 @@
+.denied {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 26px;
+  padding: 64px 20px;
+}
+
+.denied__folder {
+  position: relative;
+  width: min(100%, 580px);
+}
+
+.denied__tab {
+  position: absolute;
+  top: 0;
+  left: 44px;
+  z-index: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--ink-900);
+  color: var(--paper);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 8px 16px 22px;
+  border-radius: 5px 5px 0 0;
+}
+
+.denied__tab::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--stamp-terracotta);
+  flex-shrink: 0;
+}
+
+.denied__card {
+  position: relative;
+  z-index: 1;
+  margin-top: 24px;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lift);
+  padding: 46px 44px 42px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.denied__card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 14px;
+  right: 14px;
+  height: 2px;
+  background: var(--danger);
+  opacity: 0.7;
+}
+
+/* líneas de un expediente "tachado" — refuerzan la idea de contenido vedado */
+.denied__redactions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0 30px;
+  opacity: 0.85;
+}
+
+.denied__redactions span {
+  height: 9px;
+  border-radius: 2px;
+  background: var(--ink-900);
+}
+
+.denied__redactions span:nth-child(1) { width: 72%; }
+.denied__redactions span:nth-child(2) { width: 52%; }
+.denied__redactions span:nth-child(3) { width: 61%; }
+
+.denied__stampwrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 22px;
+}
+
+.denied__stamp {
+  width: 172px;
+  height: 172px;
+  color: var(--danger);
+  transform: rotate(-9deg);
+  opacity: 0.92;
+}
+
+.denied__code {
+  justify-content: center;
+  display: flex;
+  color: var(--danger);
+  margin-bottom: 10px;
+}
+
+.denied__card h1 {
+  font-size: 27px;
+  line-height: 1.2;
+  margin: 0 0 14px;
+  max-width: 420px;
+  margin-inline: auto;
+}
+
+.denied__lede {
+  margin: 0 auto;
+  max-width: 420px;
+  color: var(--ink-500);
+  font-size: 14.5px;
+  line-height: 1.6;
+}
+
+.denied__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.denied__colophon {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.04em;
+  color: var(--ink-muted);
+  text-align: center;
+}
+
+@media (max-width: 560px) {
+  .denied__card {
+    padding: 40px 24px 34px;
+  }
+
+  .denied__stamp {
+    width: 148px;
+    height: 148px;
+  }
+}

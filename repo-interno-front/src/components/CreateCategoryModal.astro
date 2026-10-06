@@ -1,0 +1,23 @@
+---
+import Modal from './Modal.astro';
+
+interface Props {
+  id: string;
+}
+
+const { id } = Astro.props;
+---
+
+<Modal id={id} titulo="Nueva categoría" descripcion="Crea una categoría para clasificar documentos." adminOnly>
+  <form data-categoria-form novalidate>
+    <label class="field">
+      <span class="field__label">Nombre</span>
+      <input type="text" name="nombre" placeholder="Actas y Resoluciones" maxlength="150" required />
+    </label>
+
+    <div class="modal__actions">
+      <button type="button" class="btn btn--ghost" data-modal-cerrar>Cancelar</button>
+      <button type="submit" class="btn" data-categoria-submit>Crear categoría</button>
+    </div>
+  </form>
+</Modal>

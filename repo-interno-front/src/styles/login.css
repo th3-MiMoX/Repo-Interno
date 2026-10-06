@@ -1,0 +1,134 @@
+.login {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  padding: 40px 20px;
+}
+
+.login__card {
+  width: min(100%, 440px);
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lift);
+  padding: 34px 36px 30px;
+}
+
+.login__brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.login__mark {
+  color: var(--stamp-terracotta);
+  flex-shrink: 0;
+}
+
+.login__brand-name {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.login__rule {
+  margin: 20px 0;
+}
+
+.login__intro h1 {
+  font-size: 27px;
+  margin: 6px 0 10px;
+}
+
+.login__lede {
+  margin: 0;
+  color: var(--ink-500);
+  font-size: 14.5px;
+  line-height: 1.55;
+}
+
+.login__error {
+  margin: 18px 0 0;
+  padding: 10px 12px;
+  border: 1px solid var(--danger);
+  border-radius: var(--radius-sm);
+  background: rgba(163, 57, 42, 0.07);
+  color: var(--danger);
+  font-size: 13px;
+}
+
+.login__form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 22px;
+}
+
+.login__submit {
+  justify-content: center;
+  margin-top: 6px;
+  width: 100%;
+  position: relative;
+}
+
+.login__submit[data-loading] .login__submit-label {
+  opacity: 0;
+}
+
+.login__submit[data-loading]::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 2px solid rgba(241, 234, 217, 0.35);
+  border-top-color: var(--paper);
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.login__hint {
+  margin: 20px 0 0;
+  font-size: 12.5px;
+  color: var(--ink-muted);
+  line-height: 1.6;
+}
+
+.login__demo {
+  margin-top: 18px;
+  padding: 12px 14px;
+  border: 1px dashed var(--rule);
+  border-radius: var(--radius-sm);
+}
+
+.login__demo p {
+  margin: 4px 0 0;
+  font-size: 12.5px;
+  color: var(--ink-700);
+  font-family: var(--font-mono);
+}
+
+.login__demo p span {
+  color: var(--ink-muted);
+  font-family: var(--font-body);
+}
+
+.login__colophon {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.04em;
+  color: var(--ink-muted);
+  text-align: center;
+}

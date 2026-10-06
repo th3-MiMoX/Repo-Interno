@@ -1,0 +1,28 @@
+# --- Secretos y configuración local (NUNCA subir) ---
+.env
+.env.*
+!.env.example
+
+# --- Archivos subidos por los usuarios (datos reales) ---
+uploaded_files/
+
+# --- Dependencias y entornos virtuales ---
+.venv/
+venv/
+node_modules/
+
+# --- Artefactos de build / caché ---
+versions/
+__pycache__/
+*.py[cod]
+dist/
+.astro/
+*.log
+
+# --- Configuración de editor / herramientas locales ---
+.claude/
+.vscode/
+.idea/
+CLAUDE.md
+AGENTS.md
+.DS_Store

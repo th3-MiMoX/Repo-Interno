@@ -1,0 +1,47 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Sidebar from '../components/Sidebar.astro';
+import SearchBar from '../components/SearchBar.astro';
+import UploadDocumentModal from '../components/UploadDocumentModal.astro';
+import '@styles/index.css';
+---
+
+<Layout title="Archivo — Repositorio Documental">
+  <Header active="expedientes" showUserMenu />
+
+  <main class="shell">
+    <div class="shell__grid">
+      <Sidebar />
+
+      <section class="shell__content">
+        <div class="pagehead">
+          <p class="eyebrow" data-page-eyebrow>Vista general</p>
+          <h2 data-page-heading>Todos los expedientes</h2>
+          <p class="pagehead__lede">
+            Documentación ordinaria interna clasificada por área. Cada expediente conserva su
+            código de referencia, autor y vigencia para consulta y auditoría.
+          </p>
+        </div>
+
+        <SearchBar total={0} />
+
+        <div class="grid" data-documentos-grid>
+          <p class="grid__empty" data-empty-state hidden>
+            Ningún expediente coincide con la búsqueda o categoría seleccionada.
+          </p>
+        </div>
+
+        <nav class="pagination" data-paginacion aria-label="Paginación de expedientes"></nav>
+      </section>
+    </div>
+  </main>
+
+  <footer class="colophon">
+    <p>Archivo · Sistema interno de gestión documental · Acceso restringido al personal autorizado</p>
+  </footer>
+
+  <UploadDocumentModal id="modal-documento" />
+</Layout>
+
+<script src="/src/lib/index.ts"></script>

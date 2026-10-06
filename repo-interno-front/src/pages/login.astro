@@ -1,0 +1,82 @@
+---
+import Layout from '../layouts/Layout.astro';
+import "@styles/login.css";
+---
+
+<Layout title="Iniciar sesión — Archivo">
+  <main class="login">
+    <div class="login__card">
+      <div class="login__brand">
+        <span class="login__mark" aria-hidden="true">
+          <svg viewBox="0 0 40 40" width="36" height="36">
+            <rect x="1" y="1" width="38" height="38" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/>
+            <path d="M11 13 H29 M11 20 H29 M11 27 H22" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <div>
+          <p class="login__brand-name">Archivo</p>
+          <p class="eyebrow">Repositorio Documental Interno</p>
+        </div>
+      </div>
+
+      <hr class="rule login__rule" />
+
+      <div class="login__intro">
+        <p class="eyebrow">Acceso restringido</p>
+        <h1>Iniciar sesión</h1>
+        <p class="login__lede">
+          Ingresa con las credenciales asignadas por el administrador para consultar y
+          gestionar la documentación interna.
+        </p>
+      </div>
+
+      <p class="login__error" id="login__error" data-login-error hidden role="alert"></p>
+
+      <form class="login__form" id="loginForm" data-login-form novalidate>
+        <label class="field">
+          <span class="field__label">Usuario(RUT)</span>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            data-login-username
+            autocomplete="username"
+            placeholder="123456789"
+            required
+          />
+          <div class="form-error"></div>
+        </label>
+
+        <label class="field">
+          <span class="field__label">Contraseña</span>
+          <input
+            type="password"
+            name="password"
+            data-login-password
+            autocomplete="current-password"
+            placeholder="••••••••••"
+            required
+          />
+          <div class="form-error"></div>
+        </label>
+
+        <button type="submit" class="btn login__submit" data-login-submit>
+          <span class="login__submit-label">Ingresar</span>
+        </button>
+      </form>
+
+      <p class="login__hint">
+        ¿Olvidaste tu contraseña o necesitas una cuenta? Contacta al administrador del
+        sistema.
+      </p>
+
+    </div>
+
+    <p class="login__colophon">
+      Archivo · Sistema interno de gestión documental · Acceso restringido al personal autorizado
+    </p>
+  </main>
+
+  <script src="/src/lib/login.ts"></script>
+
+</Layout>

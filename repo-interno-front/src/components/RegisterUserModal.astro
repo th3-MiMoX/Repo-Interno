@@ -1,0 +1,51 @@
+---
+import Modal from './Modal.astro';
+
+interface Props {
+  id: string;
+}
+
+const { id } = Astro.props;
+---
+
+<Modal id={id} titulo="Nuevo usuario" descripcion="Registra una cuenta de acceso a la plataforma." adminOnly>
+  <form data-usuario-form novalidate>
+    <label class="field">
+      <span class="field__label">Usuario (9-10 caracteres)</span>
+      <input type="text" name="username" placeholder="usr000005" minlength="9" maxlength="10" required />
+    </label>
+
+    <div class="field-row">
+      <label class="field">
+        <span class="field__label">Nombre</span>
+        <input type="text" name="nombre" placeholder="Ana" required />
+      </label>
+      <label class="field">
+        <span class="field__label">Apellido</span>
+        <input type="text" name="apellido" placeholder="Rojas" required />
+      </label>
+    </div>
+
+    <label class="field">
+      <span class="field__label">Contraseña</span>
+      <input type="password" name="password" placeholder="••••••••••" required />
+      <span class="field__hint">Mínimo 8 caracteres, con mayúscula, número y carácter especial.</span>
+    </label>
+
+    <div class="field-row field-row--check">
+      <label class="checkbox">
+        <input type="checkbox" name="es_admin" />
+        <span>Permisos de administrador</span>
+      </label>
+      <label class="checkbox">
+        <input type="checkbox" name="activo" checked />
+        <span>Cuenta activa</span>
+      </label>
+    </div>
+
+    <div class="modal__actions">
+      <button type="button" class="btn btn--ghost" data-modal-cerrar>Cancelar</button>
+      <button type="submit" class="btn" data-usuario-submit>Crear usuario</button>
+    </div>
+  </form>
+</Modal>

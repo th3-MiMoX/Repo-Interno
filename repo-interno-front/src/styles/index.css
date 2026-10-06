@@ -1,0 +1,67 @@
+.shell {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 32px clamp(20px, 4vw, 48px) 60px;
+}
+
+.shell__grid {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 32px;
+}
+
+.pagehead {
+  margin-bottom: 24px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.pagehead h2 {
+  font-size: 32px;
+  margin: 6px 0 10px;
+}
+
+.pagehead__lede {
+  margin: 0;
+  max-width: 640px;
+  color: var(--ink-500);
+  font-size: 15.5px;
+  line-height: 1.6;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 18px;
+}
+
+.grid__empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 48px 20px;
+  color: var(--ink-muted);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  border: 1px dashed var(--rule);
+  border-radius: var(--radius-md);
+}
+
+.colophon {
+  text-align: center;
+  padding: 22px 20px 36px;
+  border-top: 1px solid var(--rule);
+}
+
+.colophon p {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--ink-muted);
+}
+
+@media (max-width: 880px) {
+    .shell__grid {
+      grid-template-columns: 1fr;
+    }
+  }
